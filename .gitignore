@@ -24,3 +24,6 @@ puzzle_1_solver-*.tar
 
 # Temporary files, for example, from tests.
 /tmp/
+
+# Intellij directory
+/.idea/

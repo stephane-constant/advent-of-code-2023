@@ -3,7 +3,7 @@ defmodule Puzzle1Solver.MixProject do
 
   def project do
     [
-      app: :puzzle_1_solver,
+      app: :advent_of_code_2023,
       version: "0.1.0",
       elixir: "~> 1.15",
       start_permanent: Mix.env() == :prod,
