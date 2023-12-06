@@ -8,7 +8,7 @@ defmodule AdventOfCode2023.Puzzle1Part2Solver do
   """
 
   @doc """
-  Solve puzzle1 part 2 by TBC.
+  Solve puzzle 1 part 2 by TBC.
 
   ## Examples
 
@@ -19,6 +19,10 @@ defmodule AdventOfCode2023.Puzzle1Part2Solver do
     stream_as_strings(puzzle_filename)
     |> Enum.into([], fn line -> _parse(line) end)
     |> _solve()
+    |> (fn solution ->
+      Logger.info("Puzzle 1 part 2 : solution = #{solution}")
+      solution
+    end).()
   end
 
   defp _parse(puzzle_line) do
@@ -29,8 +33,6 @@ defmodule AdventOfCode2023.Puzzle1Part2Solver do
 
   defp _solve(calibration_values) do
     Logger.debug("TODO Puzzle 1 part 2 : calibration values #{inspect(calibration_values)}")
-    solution = Enum.reduce(calibration_values, 0, fn value, sum -> value + sum end)
-    Logger.info("TODO Puzzle 1 part 2 : solution = #{solution}")
-    solution
+    Enum.reduce(calibration_values, 0, fn value, sum -> value + sum end)
   end
 end
