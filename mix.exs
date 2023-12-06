@@ -1,4 +1,4 @@
-defmodule Puzzle1Solver.MixProject do
+defmodule AdventOfCode2023.Puzzle1Solver.MixProject do
   use Mix.Project
 
   def project do
@@ -26,3 +26,6 @@ defmodule Puzzle1Solver.MixProject do
     ]
   end
 end
+
+# TODO : Logger level not working, debug messages are logged
+Logger.configure(level: :info)

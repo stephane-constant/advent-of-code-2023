@@ -1,4 +1,4 @@
-defmodule PuzzleInputReader do
+defmodule AdventOfCode2023.PuzzleInputReader do
   @moduledoc false
 
   def read_as_strings(puzzle_filename) do

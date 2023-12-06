@@ -1,5 +1,8 @@
 defmodule Puzzle1SolverTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
+
+  alias AdventOfCode2023.Puzzle1Solver
+
   doctest Puzzle1Solver
 
   test "Puzzle1Solver can solve the test input file" do

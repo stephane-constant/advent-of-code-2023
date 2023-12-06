@@ -1,7 +1,7 @@
 defmodule PuzzleInputReaderTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
-  alias PuzzleInputReader
+  alias AdventOfCode2023.PuzzleInputReader
 
   @moduletag :capture_log
 
