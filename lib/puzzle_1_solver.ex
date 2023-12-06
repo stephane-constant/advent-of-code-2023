@@ -1,10 +1,13 @@
 defmodule Puzzle1Solver do
+  require Logger
+
   @moduledoc """
   Documentation for `Puzzle1Solver`.
   """
 
   @doc """
-  Solve puzzle1.
+  Solve puzzle1 by removing all non-digits characters from every line,
+  then keep only first and last digit, convert as a new integer and sum them all.
 
   ## Examples
 
@@ -13,29 +16,18 @@ defmodule Puzzle1Solver do
   """
   def run(puzzle_filename) do
     PuzzleInputReader.read_as_strings(puzzle_filename)
-    |> Enum.map(&_parse/1)
-    |> Enum.map(&_solve/1)
+    |> Enum.into([], fn line -> _parse(line) end)
+    |> _solve()
   end
 
-  def _parse(puzzle_line) do
-    IO.puts("Puzzle 1 : parse line #{puzzle_line}")
-    puzzle_line
+  defp _parse(puzzle_line) do
+    Logger.debug("Puzzle 1 : parse line #{puzzle_line}")
+    only_digits = String.replace(puzzle_line, ~r/[^\d]/, "")
+    String.to_integer(String.first(only_digits) <> String.last(only_digits))
   end
 
-  def _get_first_digit(puzzle_line) do
-
-  end
-
-  def _get_last_digit(puzzle_line) do
-
-  end
-
-  def _get_two_digit_number(first_digit, last_digit) do
-
-  end
-
-  def _solve(calibration_value) do
-    IO.puts("Puzzle 1 : add calibration value #{calibration_value}")
-    calibration_value
+  defp _solve(calibration_values) do
+    Logger.debug("Puzzle 1 : calibration values #{inspect(calibration_values)}")
+    Enum.reduce(calibration_values, 0, fn value, sum -> value + sum end)
   end
 end
