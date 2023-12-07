@@ -1,4 +1,4 @@
-defmodule AdventOfCode2023.Puzzle1Solver.MixProject do
+defmodule AdventOfCode2023.MixProject do
   use Mix.Project
 
   def project do

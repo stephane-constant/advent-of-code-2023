@@ -27,3 +27,6 @@ puzzle_1_solver-*.tar
 
 # Intellij directory
 /.idea/
+
+# Ignore .run configuration files
+/.run/
