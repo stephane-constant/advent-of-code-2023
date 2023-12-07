@@ -1,7 +1,7 @@
 defmodule AdventOfCode2023.Puzzle1Part2.Solver do
   require Logger
 
-  alias AdventOfCode2023.Puzzle.InputReader
+  alias AdventOfCode2023.Common.InputReader
   alias AdventOfCode2023.Puzzle1Part2.Parser
 
 
