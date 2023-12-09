@@ -3,8 +3,6 @@ defmodule AdventOfCode2023.Puzzle1.SolverTest do
 
   alias AdventOfCode2023.Puzzle1.Solver
 
-  doctest Solver
-
   test "Puzzle1.Solver can solve the small input file" do
     assert Solver.run("resources/puzzle1_input_small.txt") == 142
   end

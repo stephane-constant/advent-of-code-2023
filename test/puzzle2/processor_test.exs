@@ -4,8 +4,6 @@ defmodule AdventOfCode2023.Puzzle2.ProcessorTest do
   alias AdventOfCode2023.Puzzle2.Processor
   alias AdventOfCode2023.Puzzle2.{Game, CubesSet}
 
-  doctest Processor
-
   @possible_game_with_missing_cubes %Game{
     id: 1,
     cubes_sets: [
@@ -60,25 +58,25 @@ defmodule AdventOfCode2023.Puzzle2.ProcessorTest do
   ]
 
   test "Puzzle2.Processor.find_possible_games returns the game when 'possible' (with all cubes)" do
-    assert [@possible_game_with_all_cubes] = Processor.find_possible_games([@possible_game_with_all_cubes])
+    assert [@possible_game_with_all_cubes] == Processor.find_possible_games([@possible_game_with_all_cubes])
   end
 
   test "Puzzle2.Processor.find_possible_games returns game ID of one 'possible' game (some missing cubes)" do
-    assert [@possible_game_with_missing_cubes] = Processor.find_possible_games([@possible_game_with_missing_cubes])
+    assert [@possible_game_with_missing_cubes] == Processor.find_possible_games([@possible_game_with_missing_cubes])
   end
 
   test "Puzzle2.Processor.find_possible_games filters out all 'impossible' games" do
-    assert [] = Processor.find_possible_games(@impossible_games)
+    assert [] == Processor.find_possible_games(@impossible_games)
   end
 
   test "Puzzle2.Processor.find_possible_games filters correctly between 'possible' and 'impossible' games" do
     games = [@possible_game_with_missing_cubes] ++ @impossible_games ++ [@possible_game_with_all_cubes]
 
-    assert [@possible_game_with_missing_cubes, @possible_game_with_all_cubes] = Processor.find_possible_games(games)
+    assert [@possible_game_with_missing_cubes, @possible_game_with_all_cubes] == Processor.find_possible_games(games)
   end
 
   test "Puzzle2.Processor.sum_game_ids returns the correct total" do
-    assert 6 = Processor.sum_game_ids(@possible_games)
+    assert 6 == Processor.sum_game_ids(@possible_games)
   end
 
 end

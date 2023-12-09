@@ -20,19 +20,15 @@ defmodule AdventOfCode2023.Puzzle2.Parser do
 
   defp _extract_game_id("Game " <> game_id), do: {:ok, String.to_integer(game_id)}
 
-  @doc """
-  Returns {:ok, [%CubesSet{blue: 3, red: 4, green: 0}, %CubesSet{green: 2, red: 0, blue: 0}]}
-  if sets_labels is ["3 blue, 4 red", "2 green"]
-  """
-  def _extract_cubes_sets(sets_labels) do
+  #  Returns {:ok, [%CubesSet{blue: 3, red: 4, green: 0}, %CubesSet{green: 2, red: 0, blue: 0}]}
+  #  if sets_labels is ["3 blue, 4 red", "2 green"]
+  defp _extract_cubes_sets(sets_labels) do
     cubes_sets = sets_labels |> Enum.map(&_extract_cubes_set/1)
     {:ok, cubes_sets}
   end
 
-  @doc """
-  Returns %CubesSet{blue: 3, red: 4, green: 0}
-  if cubes_label is "3 blue, 4 red".
-  """
+  #  Returns %CubesSet{blue: 3, red: 4, green: 0}
+  #  if cubes_label is "3 blue, 4 red".
   defp _extract_cubes_set(cubes_label) do
     String.split(cubes_label, ",")
     |> Enum.map(&String.split/1)

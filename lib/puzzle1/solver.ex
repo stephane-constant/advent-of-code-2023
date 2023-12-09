@@ -10,7 +10,6 @@ defmodule AdventOfCode2023.Puzzle1.Solver do
   ## Examples
 
       AdventOfCode2023.Puzzle1.Solver.run("resources/puzzle1_input.txt")
-      is expected to return 55208
 
   """
   def run(puzzle_filename) do

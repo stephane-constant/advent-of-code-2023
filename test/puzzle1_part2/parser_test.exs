@@ -3,8 +3,6 @@ defmodule AdventOfCode2023.Puzzle1Part2.ParserTest do
 
   alias AdventOfCode2023.Puzzle1Part2.Parser
 
-  doctest Parser
-
   @lines [
     "two1nine",
     "eightwothree",
@@ -20,14 +18,14 @@ defmodule AdventOfCode2023.Puzzle1Part2.ParserTest do
   test "Puzzle1Part2.Parser can parse the test lines" do
     Enum.zip(@lines, @expected_values)
     |> Enum.map(fn {line, expected_value} ->
-      assert Parser.parse(line) == expected_value
+      assert expected_value == Parser.parse(line)
     end)
   end
 
   test "Puzzle1Part2.Parser can parse the test lines without pattern matching" do
     Enum.zip(@lines, @expected_values)
     |> Enum.map(fn {line, expected_value} ->
-      assert Parser.parse(line) == expected_value
+      assert expected_value == Parser.parse(line)
     end)
   end
 end
