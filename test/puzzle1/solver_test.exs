@@ -1,4 +1,4 @@
-defmodule Puzzle1.Solver.Test do
+defmodule AdventOfCode2023.Puzzle1.SolverTest do
   use ExUnit.Case, async: true
 
   alias AdventOfCode2023.Puzzle1.Solver

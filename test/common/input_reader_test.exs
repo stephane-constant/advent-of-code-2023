@@ -1,4 +1,4 @@
-defmodule AdventOfCode2023.Common.InputReader.Test do
+defmodule AdventOfCode2023.Common.InputReaderTest do
   use ExUnit.Case, async: true
 
   alias AdventOfCode2023.Common.InputReader

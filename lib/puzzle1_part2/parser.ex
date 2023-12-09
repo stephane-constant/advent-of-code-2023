@@ -1,13 +1,10 @@
 defmodule AdventOfCode2023.Puzzle1Part2.Parser do
   require Logger
 
-  @moduledoc """
-  Documentation for `Puzzle1Part2.Parser`
-  """
-
+  @moduledoc false
 
   @doc """
-  Parse line of puzzle 1 part 2 in Elixir way : apply recursion + pattern matching + function guards.
+  Parses line of puzzle 1 part 2 in Elixir way : apply recursion + pattern matching + function guards.
   Function clauses are grouped and ordered by arity then number on purpose.
   Note that when we find one of the words "number", we put back some of the characters,
   as they may start the following one (ex : twone is 2 then 1. nineightwo is 9 then 8 then 2).

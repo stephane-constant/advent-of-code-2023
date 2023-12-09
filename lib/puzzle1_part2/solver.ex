@@ -4,13 +4,10 @@ defmodule AdventOfCode2023.Puzzle1Part2.Solver do
   alias AdventOfCode2023.Common.InputReader
   alias AdventOfCode2023.Puzzle1Part2.Parser
 
-
-  @moduledoc """
-  Documentation for `Puzzle1Part2.Solver`.
-  """
+  @moduledoc false
 
   @doc """
-  Solve puzzle 1 part 2 with hardened line parser, and sum them all.
+  Solves puzzle 1 part 2 with hardened line parsing than part 1, and sum them all.
 
   ## Examples
 

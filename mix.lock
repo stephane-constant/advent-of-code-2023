@@ -1,0 +1,3 @@
+%{
+  "exconstructor": {:hex, :exconstructor, "1.2.10", "72a540c89b4c5af75f88c076727c0318a8f4038df6412dcf546e8771dcac118d", [:mix], [], "hexpm", "6e504f88cc56c3a7313f0d7687c5d3454b014255867232957512a61e5f90bea7"},
+}
