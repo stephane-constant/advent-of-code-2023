@@ -5,7 +5,7 @@ defmodule AdventOfCode2023.Puzzle2.Solver do
   alias AdventOfCode2023.Puzzle2.{Parser, Processor}
 
   @doc """
-  Solves puzzle 2.
+  Solves puzzle 2 by finding the 'possible' games, then sum their IDs.
 
   ## Examples
 

@@ -6,7 +6,7 @@ defmodule AdventOfCode2023.Puzzle2Part2.Solver do
 
   @doc """
   Solves puzzle 2 part 2 by finding the fewest number of cubes of each color
-  (in every 'possible' game), then multiply together, then sum all 'possible' games.
+  (in every game, not only the 'possible' ones), then multiply together, then sum for all games.
 
   ## Examples
 
@@ -17,8 +17,8 @@ defmodule AdventOfCode2023.Puzzle2Part2.Solver do
   def run(puzzle_filename) do
     InputReader.stream_as_strings(puzzle_filename)
     |> Enum.into([], fn line -> Parser.parse(line) end)
-    |> Processor.find_possible_games()
-    |> Processor.sum_game_ids()
+    |> Processor.find_possible_games() # NOT OK
+    |> Processor.sum_game_ids() # NOT OK
     |> (fn solution ->
       Logger.info("Puzzle 2 : solution = #{solution}")
       solution

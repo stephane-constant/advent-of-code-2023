@@ -2,58 +2,59 @@ defmodule AdventOfCode2023.Puzzle2.ProcessorTest do
   use ExUnit.Case
 
   alias AdventOfCode2023.Puzzle2.Processor
+  alias AdventOfCode2023.Puzzle2.{Game, CubesSet}
 
   doctest Processor
 
-  @possible_game_with_missing_cubes %{
-    "id" => "1",
-    "cubes_sets" => [
-      %{"blue" => "3", "red" => "4"},
-      %{"green" => "2", "blue" => "6"},
-      %{"green" => "2"}
+  @possible_game_with_missing_cubes %Game{
+    id: 1,
+    cubes_sets: [
+      %CubesSet{blue: 3, red: 4},
+      %CubesSet{green: 2, blue: 6},
+      %CubesSet{green: 2}
     ]
   }
 
-  @possible_game_with_all_cubes %{
-    "id" => "2",
-    "cubes_sets" => [
-      %{"blue" => "3", "red" => "4", "green" => "5"},
-      %{"red" => "1", "green" => "2", "blue" => "6"},
-      %{"green" => "2", "blue" => "6", "red" => "2"}
+  @possible_game_with_all_cubes %Game{
+    id: 2,
+    cubes_sets: [
+      %CubesSet{blue: 3, red: 4, green: 5},
+      %CubesSet{red: 1, green: 2, blue: 6},
+      %CubesSet{green: 2, blue: 6, red: 2}
     ]
   }
 
   @possible_games [
     @possible_game_with_missing_cubes,
     @possible_game_with_all_cubes,
-    %{"id" => "3",
-      "cubes_sets" => [
-        %{"blue" => "3", "red" => "4"},
-        %{"green" => "2", "blue" => "6"},
-        %{"green" => "2"}
+    %Game{id: 3,
+      cubes_sets: [
+        %CubesSet{blue: 3, red: 4},
+        %CubesSet{green: 2, blue: 6},
+        %CubesSet{green: 2}
       ]
     }]
 
   @impossible_games [
-    %{"id" => "4",
-      "cubes_sets" => [
-        %{"blue" => "3", "red" => "4"},
-        %{"green" => "2", "blue" => "15"}, # too much blue
-        %{"green" => "2"}
+    %Game{id: 4,
+      cubes_sets: [
+        %CubesSet{blue: 3, red: 4},
+        %CubesSet{green: 2, blue: 15}, # too much blue
+        %CubesSet{green: 2}
       ]
     },
-    %{"id" => "5",
-      "cubes_sets" => [
-        %{"blue" => "3", "red" => "13"}, # too much red
-        %{"green" => "2", "blue" => "6"},
-        %{"green" => "2"}
+    %Game{id: 5,
+      cubes_sets: [
+        %CubesSet{blue: 3, red: 13}, # too much red
+        %CubesSet{green: 2, blue: 6},
+        %CubesSet{green: 2}
       ]
     },
-    %{"id" => "6",
-      "cubes_sets" => [
-        %{"blue" => "3", "red" => "4"},
-        %{"green" => "2", "blue" => "6"},
-        %{"green" => "14"} # too much green
+    %Game{id: 6,
+      cubes_sets: [
+        %CubesSet{blue: 3, red: 4},
+        %CubesSet{green: 2, blue: 6},
+        %CubesSet{green: 14} # too much green
       ]
     },
   ]
