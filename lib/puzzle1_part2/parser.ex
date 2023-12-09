@@ -1,8 +1,6 @@
 defmodule AdventOfCode2023.Puzzle1Part2.Parser do
   require Logger
 
-  @moduledoc false
-
   @doc """
   Parses line of puzzle 1 part 2 in Elixir way : apply recursion + pattern matching + function guards.
   Function clauses are grouped and ordered by arity then number on purpose.

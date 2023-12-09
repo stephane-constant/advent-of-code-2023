@@ -3,8 +3,6 @@ defmodule AdventOfCode2023.Puzzle1.Solver do
 
   alias AdventOfCode2023.Common.InputReader
 
-  @moduledoc false
-
   @doc """
   Solves puzzle 1 by removing all non-digits characters from every line,
   then keep only first and last digits, convert as a new integer and sum them all.
