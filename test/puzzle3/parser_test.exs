@@ -9,8 +9,8 @@ defmodule AdventOfCode2023.Puzzle3.ParserTest do
 
     assert 2 == length(part_numbers)
     assert [
-            %PartNumber{value: 467, x: 0, y: 1},
-            %PartNumber{value: 114, x: 5, y: 1}
+            %PartNumber{value: "467", x: 0, y: 1},
+            %PartNumber{value: "114", x: 5, y: 1}
            ] = part_numbers
   end
 
@@ -18,7 +18,7 @@ defmodule AdventOfCode2023.Puzzle3.ParserTest do
     part_numbers = Parser.extract_part_numbers({"617*......", 2})
 
     assert 1 == length(part_numbers)
-    assert [%PartNumber{value: 617, x: 0, y: 2}] = part_numbers
+    assert [%PartNumber{value: "617", x: 0, y: 2}] = part_numbers
   end
 
   test "Puzzle3.Parser can manage a line without part number" do
@@ -27,7 +27,7 @@ defmodule AdventOfCode2023.Puzzle3.ParserTest do
     assert 0 == length(part_numbers)
   end
 
-  test "Puzzle3.Parser can extract symbols from a simple line" do
+  test "Puzzle3.Parser can extract symbols from a line without part numbers" do
     symbols = Parser.extract_symbols({"...$.*....", 4})
 
     assert 2 == length(symbols)
@@ -38,7 +38,7 @@ defmodule AdventOfCode2023.Puzzle3.ParserTest do
   end
 
   test "Puzzle3.Parser can extract symbols from a line with part numbers" do
-    symbols = Parser.extract_symbols({".....+.58.", 5})
+    symbols = Parser.extract_symbols({".33..+.58.", 5})
 
     assert 1 == length(symbols)
     assert [%Symbol{x: 5, y: 5}] = symbols

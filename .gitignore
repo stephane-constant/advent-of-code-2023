@@ -30,3 +30,6 @@ puzzle_1_solver-*.tar
 
 # Ignore .run configuration files
 /.run/
+
+# Test outputs
+output_*.txt

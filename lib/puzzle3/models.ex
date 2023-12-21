@@ -5,5 +5,5 @@ end
 
 defmodule AdventOfCode2023.Puzzle3.Symbol do
   @doc "A symbol with its coordinates in the engine schematic."
-  defstruct [:x, :y]
+  defstruct [:character, :x, :y]
 end
