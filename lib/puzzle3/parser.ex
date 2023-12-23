@@ -2,8 +2,11 @@ defmodule AdventOfCode2023.Puzzle3.Parser do
 
   alias AdventOfCode2023.Puzzle3.{PartNumber, Symbol}
 
-  @period "."
   @end_of_line "\n"
+
+  @period "."
+
+  @numeric_values Enum.map(0..9, &Integer.to_string/1)
 
   # Use tail-recursion to identify any first digit, then extract as full part number
   def extract_part_numbers({puzzle_line, line_index}) do
@@ -16,7 +19,8 @@ defmodule AdventOfCode2023.Puzzle3.Parser do
   end
 
   defp extract_part_numbers([head | tail], line_index, position, previous_part_numbers) do
-    case Regex.match?(~r/^\d+$/, head) do
+    case head in @numeric_values do
+#    case Regex.match?(~r/^\d+$/, head) do
       true ->
         new_number_as_string = Enum.join(extract_full_part_number(tail, [head]))
         new_part_number = %PartNumber{value: new_number_as_string, x: position, y: line_index}
@@ -32,7 +36,8 @@ defmodule AdventOfCode2023.Puzzle3.Parser do
   end
 
   defp extract_full_part_number([head | tail], previous_numbers) do
-    case Regex.match?(~r/^\d+$/, head) do
+    case head in @numeric_values do
+#    case Regex.match?(~r/^\d+$/, head) do
       true -> extract_full_part_number(tail, [head | previous_numbers])
       false -> :lists.reverse(previous_numbers)
     end
@@ -50,7 +55,8 @@ defmodule AdventOfCode2023.Puzzle3.Parser do
 
   defp extract_symbols([head | tail], line_index, position, previous_symbols) do
     cond do
-      head != @period and not Regex.match?(~r/^\d+$/, head) ->
+      head != @period and head not in @numeric_values ->
+#      head != @period and not Regex.match?(~r/^\d+$/, head) ->
         another_symbol = %Symbol{character: head, x: position, y: line_index}
         extract_symbols(tail, line_index, position + 1, [another_symbol | previous_symbols])
 

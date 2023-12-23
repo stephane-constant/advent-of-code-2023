@@ -88,4 +88,80 @@ defmodule ProcessorTest do
            ])
   end
 
-end
+  test "Puzzle3.Processor.find_gears does not compute gear ratio when 0 part number adjacent to symbol *" do
+    part_numbers = [
+      %PartNumber{value: "467", x: 0, y: 0},
+      %PartNumber{value: "35", x: 2, y: 2},
+    ]
+
+    symbols = [%Symbol{character: "*", x: 10, y: 1}] # too far on the right side
+
+    assert [] = Processor.find_gears(part_numbers, symbols)
+  end
+
+  test "Puzzle3.Processor.find_gears does not compute gear ratio when only 1 part number adjacent to symbol *" do
+    part_numbers = [
+      %PartNumber{value: "467", x: 0, y: 0},
+      %PartNumber{value: "35", x: 2, y: 2},
+      %PartNumber{value: "617", x: 0, y: 4}, # adjacent part number
+    ]
+
+    symbols = [%Symbol{character: "*", x: 3, y: 4}]
+
+    assert [] = Processor.find_gears(part_numbers, symbols)
+  end
+
+  test "Puzzle3.Processor.find_gears does not compute gear ratio when more than 2 part numbers adjacent to symbol *" do
+    part_numbers = [
+      %PartNumber{value: "467", x: 0, y: 0}, # adjacent & above
+      %PartNumber{value: "633", x: 4, y: 1}, # adjacent & right side
+      %PartNumber{value: "35", x: 2, y: 2}, # adjacent & below
+    ]
+
+    symbols = [%Symbol{character: "*", x: 3, y: 1}]
+
+    assert [] = Processor.find_gears(part_numbers, symbols)
+  end
+
+  test "Puzzle3.Processor.find_gears does not compute gear ratio when 2 part numbers adjacent to another symbol than *" do
+    part_numbers = [
+      %PartNumber{value: "467", x: 0, y: 0}, # adjacent & above
+      %PartNumber{value: "35", x: 2, y: 2}, # adjacent & below
+    ]
+
+    symbols = [%Symbol{character: "@", x: 3, y: 1}]
+
+    assert [] = Processor.find_gears(part_numbers, symbols)
+  end
+
+  test "Puzzle3.Processor.find_gears finds a gear (after multiplying its ratios)" do
+    part_numbers = [
+      %PartNumber{value: "467", x: 0, y: 0},
+      %PartNumber{value: "35", x: 2, y: 2},
+    ]
+
+    symbols = [
+      %Symbol{character: "*", x: 3, y: 1}
+    ]
+
+    assert [16345] = Processor.find_gears(part_numbers, symbols)
+  end
+
+  test "Puzzle3.Processor.find_gears returns the gears (after multiplying the gear ratios)" do
+    part_numbers = [
+      %PartNumber{value: "467", x: 0, y: 0}, # adjacent to 1st symbol
+      %PartNumber{value: "35", x: 2, y: 2}, # adjacent to 1st symbol
+      %PartNumber{value: "755", x: 6, y: 7}, # adjacent to 2d symbol
+      %PartNumber{value: "598", x: 5, y: 9}, # adjacent to 2d symbol
+    ]
+
+    symbols = [
+      %Symbol{character: "*", x: 3, y: 1},
+      %Symbol{character: "*", x: 5, y: 8}
+    ]
+
+    # 467x35 and 755x598
+    assert [16345, 451490] = Processor.find_gears(part_numbers, symbols)
+  end
+
+  end

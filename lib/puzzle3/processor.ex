@@ -2,6 +2,8 @@ defmodule AdventOfCode2023.Puzzle3.Processor do
 
   alias AdventOfCode2023.Puzzle3.{PartNumber, Symbol}
 
+  @gear_ratio_symbol "*"
+
   # Loop upon part numbers, and check with all symbols' coordinates +1/-1 on x and y
   def find_part_numbers_adjacent_to_symbols([], _symbols), do: []
 
@@ -27,5 +29,23 @@ defmodule AdventOfCode2023.Puzzle3.Processor do
   defp sum([]), do: 0
 
   defp sum([%PartNumber{value: value} | tail]), do: String.to_integer(value) + sum(tail)
+
+  def find_gears(part_numbers, symbols) do
+    symbols
+    |> Enum.filter(fn %Symbol{character: character} -> character == @gear_ratio_symbol end)
+    |> Enum.map(&find_ratios_and_compute_gears(&1, part_numbers))
+    |> Enum.filter(fn gear -> gear != 0 end)
+  end
+
+  defp find_ratios_and_compute_gears(symbol, part_numbers) do
+    adjacent_part_numbers = part_numbers |> Enum.filter(&adjacent?(&1, symbol))
+    case length(adjacent_part_numbers) do
+      2 ->
+        adjacent_part_numbers
+        |> Enum.map(fn %PartNumber{value: v} -> String.to_integer(v) end)
+        |> Enum.reduce(1, fn value, acc -> value * acc end)
+      _ -> 0
+    end
+  end
 
 end
