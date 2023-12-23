@@ -16,5 +16,4 @@ defmodule AdventOfCode2023.Puzzle2.ParserTest do
            ] = cubes_sets
   end
 
-
 end
