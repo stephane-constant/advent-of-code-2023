@@ -51,11 +51,16 @@ defmodule ProcessorTest do
 
   test "Puzzle3.Processor.find_part_numbers_adjacent_to_symbols returns empty list when no part number is adjacent" do
     part_numbers = [
-      %PartNumber{value: "467", x: 0, y: 0},
-      %PartNumber{value: "114", x: 5, y: 0},
+      %PartNumber{value: "467", x: 0, y: 2},
+      %PartNumber{value: "114", x: 10, y: 2},
     ]
 
-    symbols = [%Symbol{x: 6, y: 3}]
+    symbols = [
+      %Symbol{x: 0, y: 0},
+      %Symbol{x: 5, y: 2},
+      %Symbol{x: 14, y: 2},
+      %Symbol{x: 10, y: 4}
+    ]
 
     assert [] == Processor.find_part_numbers_adjacent_to_symbols(part_numbers, symbols)
   end

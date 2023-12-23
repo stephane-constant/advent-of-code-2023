@@ -32,4 +32,4 @@ puzzle_1_solver-*.tar
 /.run/
 
 # Test outputs
-output_*.txt
+/output/

@@ -10,7 +10,7 @@ defmodule AdventOfCode2023.Puzzle3.SolverTest do
   end
 
   test "Puzzle3.Solver can solve the full input file" do
-    assert Solver.run("resources/puzzle3_input.txt") == 568651 # TODO : incorrect, too high value !
+    assert Solver.run("resources/puzzle3_input.txt") == 557705
   end
 
 end

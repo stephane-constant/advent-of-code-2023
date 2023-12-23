@@ -11,16 +11,15 @@ defmodule AdventOfCode2023.Puzzle3.Processor do
     part_numbers |> Enum.filter(&adjacent_with_any?(&1, symbols))
   end
 
-  defp adjacent_with_any?(%PartNumber{y: pn_y} = part_number, symbols) do
-    # Keep the symbols potentially adjacent, ie on the line above / equal / below the part number
-    potentially_adjacent_symbols = symbols |> Enum.filter(fn %Symbol{y: s_y} -> pn_y + 1 >= s_y and s_y >= pn_y - 1 end)
-    Enum.any?(potentially_adjacent_symbols, fn symbol -> adjacent?(part_number, symbol) end)
+  defp adjacent_with_any?(part_number, symbols) do
+    Enum.any?(symbols, fn symbol -> adjacent?(part_number, symbol) end)
   end
 
-  # Return true when symbol is adjacent, ie on the left / middle / right side of the part number
-  defp adjacent?(%PartNumber{value: pn_value, x: pn_x}, %Symbol{x: s_x}) do
+  defp adjacent?(%PartNumber{value: pn_value, x: pn_x, y: pn_y}, %Symbol{x: s_x, y: s_y}) do
     pn_length = String.length(pn_value)
-    pn_x + pn_length + 1 >= s_x and s_x >= pn_x - 1
+    result = pn_y + 1 >= s_y and s_y >= pn_y - 1 and pn_x + pn_length >= s_x and s_x >= pn_x - 1
+    #    IO.puts("result for #{pn_value} with symbol #{s_x}/#{s_y} : #{result}")
+    result
   end
 
   def sum_part_number_values(part_numbers), do: sum(part_numbers)
