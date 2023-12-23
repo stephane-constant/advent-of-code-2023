@@ -21,6 +21,8 @@ defmodule AdventOfCode2023.Common.InputReader do
   """
   def stream_as_strings_with_index(puzzle_filename) do
     File.stream!(puzzle_filename, [:read])
-    |> Stream.with_index()
+    |> Stream.map(&String.strip/1)
+    |> Stream.with_index
+    |> Enum.to_list
   end
 end
