@@ -1,5 +1,5 @@
 defmodule ProcessorTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias AdventOfCode2023.Puzzle3.Processor
   alias AdventOfCode2023.Puzzle3.{PartNumber, Symbol}

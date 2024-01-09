@@ -1,5 +1,5 @@
 defmodule AdventOfCode2023.Puzzle4.ParserTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias AdventOfCode2023.Puzzle4.Parser
   alias AdventOfCode2023.Puzzle4.{Card}

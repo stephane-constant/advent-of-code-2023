@@ -1,5 +1,5 @@
 defmodule AdventOfCode2023.Puzzle3.ParserTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
   alias AdventOfCode2023.Puzzle3.Parser
   alias AdventOfCode2023.Puzzle3.{PartNumber, Symbol}
