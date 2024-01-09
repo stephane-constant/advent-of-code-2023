@@ -23,15 +23,15 @@ defmodule AdventOfCode2023.Puzzle5.Solver do
   """
   def run(puzzle_filename) do
 
-    with [head | tail] <- InputReader.stream_as_strings(puzzle_filename),
-         seeds <- Parser.parse_seeds(head),
-         ranges_1 <- Parser.extract_ranges(tail, @seed_to_soil),
-         ranges_2 <- Parser.extract_ranges(tail, @soil_to_fertilizer),
-         ranges_3 <- Parser.extract_ranges(tail, @fertilizer_to_water),
-         ranges_4 <- Parser.extract_ranges(tail, @water_to_light),
-         ranges_5 <- Parser.extract_ranges(tail, @light_to_temperature),
-         ranges_6 <- Parser.extract_ranges(tail, @temperature_to_humidity),
-         ranges_7 <- Parser.extract_ranges(tail, @humidity_to_location)
+    with [seeds_line | ranges_lines] <- InputReader.stream_as_strings(puzzle_filename),
+         seeds <- Parser.parse_seeds(seeds_line),
+         ranges_1 <- Parser.extract_ranges(ranges_lines, @seed_to_soil),
+         ranges_2 <- Parser.extract_ranges(ranges_lines, @soil_to_fertilizer),
+         ranges_3 <- Parser.extract_ranges(ranges_lines, @fertilizer_to_water),
+         ranges_4 <- Parser.extract_ranges(ranges_lines, @water_to_light),
+         ranges_5 <- Parser.extract_ranges(ranges_lines, @light_to_temperature),
+         ranges_6 <- Parser.extract_ranges(ranges_lines, @temperature_to_humidity),
+         ranges_7 <- Parser.extract_ranges(ranges_lines, @humidity_to_location)
       do
 
       solution = Processor.from_sources_to_destinations(seeds, ranges_1)
