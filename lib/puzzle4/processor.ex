@@ -34,14 +34,14 @@ defmodule AdventOfCode2023.Puzzle4.Processor do
   """
   def copy_cards_with_matching_numbers(cards) do
     cards_counters = cards |> Enum.map(fn card -> %CardCounter{card: card, count: 1} end)
-#    IO.inspect(cards_counters, label: "cards_counters")
+    #    IO.inspect(cards_counters, label: "cards_counters")
 
     _check_matching_numbers(cards_counters)
   end
 
   defp _check_matching_numbers([head]) do
-#    %CardCounter{card: %Card{id: card_id} = card, count: card_count} = head
-#    IO.inspect(head, label: "last card #{card_id} : no more matching check")
+    #    %CardCounter{card: %Card{id: card_id} = card, count: card_count} = head
+    #    IO.inspect(head, label: "last card #{card_id} : no more matching check")
 
     [head]
   end
@@ -72,5 +72,5 @@ defmodule AdventOfCode2023.Puzzle4.Processor do
     updated_counter = CardCounter.increment(head, increment)
     [updated_counter | _increment_next_counters(tail, increment, remaining_cards_to_increment - 1)]
   end
-  
+
 end

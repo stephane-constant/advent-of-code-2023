@@ -7,6 +7,7 @@ defmodule AdventOfCode2023.Common.OutputWriter do
       {:ok, file} ->
         File.write(file, items)
         File.close(file)
+        items
 
       {:error, reason} ->
         IO.puts("File not writable because of #{reason}")
@@ -19,6 +20,7 @@ defmodule AdventOfCode2023.Common.OutputWriter do
       {:ok, file} ->
         for item <- items, do: IO.write(file, inspect(item) <> "\n")
         File.close(file)
+        items
 
       {:error, reason} ->
         IO.puts("File not writable because of #{reason}")

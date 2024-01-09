@@ -1,8 +1,8 @@
 defmodule AdventOfCode2023.Puzzle4.ProcessorTest do
-  use ExUnit.Case
+  use ExUnit.Case, async: true
 
-  alias AdventOfCode2023.Puzzle4.Processor
   alias AdventOfCode2023.Puzzle4.Card
+  alias AdventOfCode2023.Puzzle4.Processor
   alias AdventOfCode2023.Puzzle4Part2.CardCounter
 
   test "Puzzle4.Processor.compute_card_points returns 0 when no winning number" do
