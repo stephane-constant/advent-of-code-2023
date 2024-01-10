@@ -3,8 +3,19 @@ defmodule AdventOfCode2023.Puzzle5.Parser do
 
   alias AdventOfCode2023.Puzzle5.ConversionRange
 
-  def parse_seeds("seeds: " <> seeds) do
+  def parse_seeds_for_part1("seeds: " <> seeds) do
     String.split(seeds, " ") |> Enum.map(&String.to_integer/1)
+  end
+
+  def parse_seeds_for_part2("seeds: " <> seeds) do
+    String.split(seeds, " ")
+    |> Enum.chunk_every(2)
+    |> Enum.map(fn [a, b] ->
+      range_min = String.to_integer(a)
+      range_max = range_min + String.to_integer(b) - 1
+      Enum.to_list(range_min..range_max)
+    end)
+    |> List.flatten()
   end
 
   def extract_ranges([head | tail], map_name) when head == map_name <> " map:" do
@@ -34,5 +45,4 @@ defmodule AdventOfCode2023.Puzzle5.Parser do
 
     _parse_ranges(tail, [new_range | previous_ranges])
   end
-
 end

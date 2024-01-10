@@ -16,7 +16,7 @@ defmodule AdventOfCode2023.Puzzle6.SolverTest do
     assert Solver.run("resources/puzzle6_part2_input_small.txt") == 71503
   end
 
-  # Warning : this one alone takes about 15sec
+  # Warning : this one alone takes about 15sec, can be improved by running each race move in a process
   #  test "Puzzle6.Solver can solve the full Part2 input file" do
   #    assert Solver.run("resources/puzzle6_part2_input.txt") == 43_364_472
   #  end
